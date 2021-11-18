@@ -11,6 +11,8 @@
 		session_start();
 
 		$servico = new Servico();
+		$servico->__set('nome', $_POST['nome']);
+		$servico->__set('icone', $_POST['icone']);
 		$servico->__set('descricao', $_POST['descricao']);
 		$servico->__set('valor', $_POST['valor']);
 
@@ -48,6 +50,8 @@
 	} else if($acao=='editar'){
 
 		$servico = new Servico();
+		$servico->__set('nome', $_POST['nome']);
+		$servico->__set('icone', $_POST['icone']);
 		$servico->__set('descricao', $_POST['descricao']);
 		$servico->__set('valor', $_POST['valor']);
 

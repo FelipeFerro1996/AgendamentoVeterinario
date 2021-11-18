@@ -103,6 +103,24 @@
                 <form method="post" action="../controller/ServicoController.php?acao=inserir">
                     <div class="row justify-content-md-center" style="margin-top: 10px; margin-bottom: 10px">
                         <div class="col-6">
+                            <label>Nome:</label>
+                        </div>
+                        <div class="col-3">
+                            <label>Ícone:</label>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-md-center">
+                        <div class="col-6">
+                            <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome:" required>
+                        </div>
+                        <div class="col-3">
+                            <input type="text" name="icone" class="form-control" id="icone" placeholder="Ícone:" required>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-md-center" style="margin-top: 10px; margin-bottom: 10px">
+                        <div class="col-6">
                             <label>Descrição:</label>
                         </div>
                         <div class="col-3">

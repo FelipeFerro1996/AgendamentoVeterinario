@@ -11,10 +11,12 @@
         }
 
         public function inserirServico(){  //create
-            $query = 'insert into servico (descricao, valor) values (?,?)';
+            $query = 'insert into servico (nome, icone, descricao, valor) values (?,?,?,?)';
             $stmt = $this->conexao->prepare($query);
-            $stmt->bindValue(1, $this->servico->__get('descricao'));
-            $stmt->bindValue(2, $this->servico->__get('valor'));
+            $stmt->bindValue(1, $this->servico->__get('nome'));
+            $stmt->bindValue(2, $this->servico->__get('icone'));
+            $stmt->bindValue(3, $this->servico->__get('descricao'));
+            $stmt->bindValue(4, $this->servico->__get('valor'));
             $stmt->execute();
         }
 
@@ -44,10 +46,13 @@
         }
 
         public function editarServico(){
-            $query = 'update servico set descricao = ?, valor = ? where id_pet = ?';
+            $query = 'update servico set nome = ?, icone = ?, descricao = ?, valor = ? where id_pet = ?';
             $stmt = $this->conexao->prepare($query);
-            $stmt->bindValue(1, $this->servico->__get('descricao'));
-            $stmt->bindValue(2, $this->servico->__get('valor'));
+            $stmt->bindValue(1, $this->servico->__get('nome'));
+            $stmt->bindValue(2, $this->servico->__get('icone'));
+            $stmt->bindValue(3, $this->servico->__get('descricao'));
+            $stmt->bindValue(4, $this->servico->__get('valor'));
+            $stmt->bindValue(5, $this->servico->__get('id_pet'));
             $stmt->execute();
         }
 

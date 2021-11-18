@@ -1,3 +1,17 @@
+<?php
+  require 'conexao.php';
+	require 'DAO/servicoDao.php';
+	require 'model/Servico.php';
+
+  $servico = new Servico();
+
+  $conexao = new Conexao();
+
+  $servicoDao = new ServicoDao($conexao, $servico);
+
+  $servicos = $servicoDao->recuperarServico("", "");
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -37,10 +51,13 @@
                 <a href="#" class="nav-link">Home</a>
               </li>
               <li class="navbar-item">
-                <a href="" class="nav-link">Serviços</a>
+                <a href="#servicos" class="nav-link">Serviços</a>
               </li>
               <li class="navbar-item">
-                <a href="" class="nav-link">Sobre-nós</a>
+                <a href="#sobreNos" class="nav-link">Sobre-nós</a>
+              </li>
+              <li class="navbar-item">
+                <a href="#veterinarios" class="nav-link">Veterinários</a>
               </li>
               <li class="navbar-item">
                 <a href="entrar.php" class="btn btn-outline-light ml-4">Entrar</a>
@@ -80,6 +97,192 @@
         </div>
       </div>
     </section><!--fim seção home-->
+
+    <section id="home" ><!--Inicio seção home-->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 d-flex">
+            
+            <div class="align-self-center">
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section><!--fim seção home-->
+
+    <section id="sobreNos" class="bg-white"><!--Inicio seção Conteudo-->
+       <div class="container">
+        <div class="row justify-content-md-center pt-4 pb-4">
+         <div class="col-md-12">
+            <h1 class="text-center">Sobre nos</h1>
+         </div>
+        </div>
+        <div class="row">
+
+          <div class="col-md-6">
+            <img src="img/sobre-img.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-md-6 d-flex align-items-center">
+            <div>
+            <h3>PET Archive</h3>
+            <p>É um sistema voltado para agendamento de consultas veterinárias, possibilitando o usuário inserir os dados do seu Pet, como não só o nome, raça, idade, porte e histórico de doenças, mas também escolher o serviço pelo qual busca (Vacina/Consulta/Atestado
+                de Viagem/MicroChip).</p>
+
+            <a href="#" class="btn btn-success"> Leia mais ➤ <span class="fas-chevron-right"></span> </a>
+            </div>
+          </div>
+
+        </div>
+       </div>
+    </section><!--Inicio seção Conteudo-->
+
+    <section id="servicos" class="bg-info"><!--Inicio seção Conteudo-->
+       <div class="container">
+        <div class="row justify-content-md-center pt-4 pb-4">
+         <div class="col-md-12">
+            <h1 class="text-center">Serviços Oferecidos</h1>
+         </div>
+        </div>
+        <div class="row">
+          <?php
+          foreach($servicos as $indice => $servico){
+          ?>
+
+            <div class="col m-2">
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <i class="<?=$servico->icone?> fa-5x mb-2"></i>
+                  <h5 class="card-title"><?=$servico->nome?></h5>
+                  <h6 class="card-title">$ <?=$servico->valor?></h6>
+                  <p class="card-text"><?=$servico->descricao?></p>
+                </div>
+              </div>
+            </div>
+
+          <?php
+          }
+          ?>
+        </div>
+       </div>
+    </section><!--Inicio seção Conteudo-->
+
+    <section id="veterinarios" class="bg-white"><!--Inicio seção Conteudo-->
+       <div class="container">
+        <div class="row justify-content-md-center pt-4 pb-4">
+         <div class="col-md-12">
+            <h1 class="text-center">veterinários</h1>
+         </div>
+        </div>
+
+        <div class="row p-4">
+
+          <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="img/vet-1.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Dra. Virgínia Sousa</h5>
+                <p class="card-text">Veterinária Cirúrgica</p>
+                <div>
+                    <a href="#" class="fab fa-facebook-f"> </a>
+                    <a href="#" class="fab fa-twitter"> </a>
+                    <a href="#" class="fab fa-instagram"> </a>
+                    <a href="#" class="fab fa-linkedin"> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="img/vet-2.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Dr. Eduardo Ribeiro</h5>
+                <p class="card-text">Clínico Veterinário</p>
+                <div>
+                    <a href="#" class="fab fa-facebook-f"> </a>
+                    <a href="#" class="fab fa-twitter"> </a>
+                    <a href="#" class="fab fa-instagram"> </a>
+                    <a href="#" class="fab fa-linkedin"> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="img/vet-3.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Dra. Helena Vasconcelos</h5>
+                <p class="card-text">Veterinária Laboratorial</p>
+                <div>
+                    <a href="#" class="fab fa-facebook-f"> </a>
+                    <a href="#" class="fab fa-twitter"> </a>
+                    <a href="#" class="fab fa-instagram"> </a>
+                    <a href="#" class="fab fa-linkedin"> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row p-3">
+
+          <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="img/vet-4.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Dr. Marcos Araújo</h5>
+                <p class="card-text">Imunologista Veterinário</p>
+                <div>
+                    <a href="#" class="fab fa-facebook-f"> </a>
+                    <a href="#" class="fab fa-twitter"> </a>
+                    <a href="#" class="fab fa-instagram"> </a>
+                    <a href="#" class="fab fa-linkedin"> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="img/vet-5.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Dra. Cecília Guimarães</h5>
+                <p class="card-text">Veterinária Farmacêutica</p>
+                <div>
+                    <a href="#" class="fab fa-facebook-f"> </a>
+                    <a href="#" class="fab fa-twitter"> </a>
+                    <a href="#" class="fab fa-instagram"> </a>
+                    <a href="#" class="fab fa-linkedin"> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="img/vet-6.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Dr. Felipe Carvalho</h5>
+                <p class="card-text">Assistente Veterinário</p>
+                <div>
+                    <a href="#" class="fab fa-facebook-f"> </a>
+                    <a href="#" class="fab fa-twitter"> </a>
+                    <a href="#" class="fab fa-instagram"> </a>
+                    <a href="#" class="fab fa-linkedin"> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+       </div>
+    </section><!--Inicio seção Conteudo-->
 
     <footer>
       <div class="container pt-4 pb-4">

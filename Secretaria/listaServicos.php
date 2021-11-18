@@ -109,6 +109,8 @@
         <div class="row justify-content-md-center">
             <table class="table table-striped bg-primary">
                 <thead class="table-dark">
+                    <th>Nome</th>
+                    <th>Ícone</th>
                     <th>Descricao</th>
                     <th>Valor</th>
                     <th>Editar</th>
@@ -121,6 +123,8 @@
                     ?>
 
                       <tr>
+                        <td><?=$dados->nome?></td>       
+                        <td><?=$dados->icone?></td>
                         <td><?=$dados->descricao?></td>       
                         <td><?=$dados->valor?></td>
                         <td class="text-center"><i style="color:blue" class="fas fa-edit" onclick="editar('<?=$dados->descricao?>',<?=$dados->valor?>, <?=$dados->id_servico?>)"></i></td>
