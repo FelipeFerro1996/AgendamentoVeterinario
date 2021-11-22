@@ -37,7 +37,7 @@
                                 on p.id_pet = a.pet_id_pet 
                             inner join usuer as u 
                                 on u.id_user = a.usuer_id_user 
-                        '.$where.' order by a.data';
+                        '.$where.' order by a.data, a.hora';
             //print_r($query);
             $stmt = $this->conexao->prepare($query);
             $stmt->execute();
