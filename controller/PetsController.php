@@ -47,7 +47,7 @@
 
 		$petDao = new PetDao($conexao, $pet);
 
-		$pets = $petDao->recuperarPet("", "", "", "","");
+		$pets = $petDao->recuperarPet("", "", "", "","",$_SESSION['id']);
 
 	} else if($acao=='editar'){
 

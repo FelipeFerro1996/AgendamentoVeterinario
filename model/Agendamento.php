@@ -7,6 +7,7 @@
 		private $obs;
 		private $pet_id_pet;
 		private $servico_id_servico;
+		private $usuer_id_user;
 
 		public function __set($atributo, $valor){
 			$this->$atributo = $valor;

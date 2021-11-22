@@ -59,21 +59,15 @@
           </button>
 
           <div class="collapse navbar-collapse" id="nav-principal">
-            <ul class="navbar-nav ml-auto">
-              <li class="navbar-item">
-                <a href="home.php" class="nav-link">Home</a>
-              </li>
+          <ul class="navbar-nav ml-auto">
               <li class="navbar-item">
                 <a href="listaServicos.php" class="nav-link">Serviços</a>
               </li>
               <li class="navbar-item">
-                <a href="sobreNos.php" class="nav-link">Sobre-nós</a>
+                <a href="meusAgendamentos.php" class="nav-link">Agendamentos</a>
               </li>
               <li class="navbar-item">
-                <a href="cadastrarAgendamento.php" class="nav-link">Agendamentos</a>
-              </li>
-              <li class="navbar-item">
-                <a href="#" class="nav-link">Pets</a>
+                <a href="listaPets.php" class="nav-link">Pets</a>
               </li>
               <li class="navbar-item">
                 <a href="../controller/UserController.php?acao=sair" class="btn btn-outline-light ml-4">Sair</a>
@@ -114,7 +108,7 @@
       </div>
     </section><!--fim seção home-->
 
-    <section id="conteudo" class="bg-info"><!--Inicio seção Conteudo-->
+    <section id="servicos" class="bg-info"><!--Inicio seção Conteudo-->
        <div class="container">
         <div class="row justify-content-md-center pt-4 pb-4">
          <div class="col-md-12">
@@ -127,11 +121,12 @@
           ?>
 
             <div class="col m-2">
-              <div class="card bg-success bg-gradiente" style="width: 18rem;">
+              <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                  <h5 class="card-title"><?=$servico->descricao?></h5>
+                  <i class="<?=$servico->icone?> fa-5x mb-2"></i>
+                  <h5 class="card-title"><?=$servico->nome?></h5>
                   <h6 class="card-title">$ <?=$servico->valor?></h6>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p class="card-text"><?=$servico->descricao?></p>
                 </div>
               </div>
             </div>

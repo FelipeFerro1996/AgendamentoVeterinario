@@ -8,6 +8,13 @@
           </script>";
   }
 
+  $acao = 'recuperar';
+  require "../controller/AgendamentoController.php";
+
+  print_r($_SESSION);
+  print_r($pets);
+  print_r($servicos);
+
 ?>
 
 <!DOCTYPE html>
@@ -26,8 +33,7 @@
     <!-- Estilo customizado -->
     <link rel="stylesheet" type="text/css" href="../css/estilo.css">
 
-    <link rel="stylesheet" href="jquery/jquery-3.6.0.min.js">
-    <link rel="stylesheet" href="jquery/jquery.mask.js">
+    <script type="text/javascript" src="../jquery/jquery-3.6.0.min.js"></script>
 
     <title>Agendamento Veterinário</title>
   </head>
@@ -45,7 +51,7 @@
           </button>
 
           <div class="collapse navbar-collapse" id="nav-principal">
-          <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto">
               <li class="navbar-item">
                 <a href="listaServicos.php" class="nav-link">Serviços</a>
               </li>
@@ -97,70 +103,104 @@
     <section id="conteudo" class="bg-info"><!--Inicio seção Conteudo-->
       <div class="container">
         <div class="row justify-content-md-center pt-4 pb-4">
-         <div class="col-md-12">
-            <h1 class="text-center">Editar Pet</h1>
+         <div class="col-md-10">
+            <h1 class="text-center">Cadastrar Agendamento</h1>
+         </div>
+         <div class="col-md-2">
+            <a href="" class="btn btn-outline-light">
+                <i class="fas fa-plus-square"></i>
+            </a>
          </div>
         </div>
         <div class="row justify-content-md-center">
             <div class="col-md-12">
-                <form method="post" action="../controller/PetsController.php?acao=editar">
-                    <input type="hidden" name="id_pet" value="<?=$_GET['id_pet']?>">
-                    <div class="row justify-content-md-center" style="margin-top: 10px; margin-bottom: 10px">
-                        <div class="col-6">
-                            <label>Nome:</label>
+
+                <form method="post" action="../controller/AgendamentoController.php?acao=inserir">
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <label>Pet::</label>
                         </div>
-                        <div class="col-3">
-                            <label>Espécie:</label>
+                        <div class="col-md-3">
+                            <label>Servico:</label>
                         </div>
+                        <div class="col-md-3"></div>
                     </div>
 
-                    <div class="row justify-content-md-center">
-                        <div class="col-6">
-                            <input type="text" name="nome" class="form-control" id="nome" value="<?=$_GET['name']?>" placeholder="Nome:" required>
-                        </div>
-                        <div class="col-3">
-                            <select class="form-control" name="especie">
-                                <option vlaue="cachorro" <?=($_GET['especie'] == 'Cachorro') ? 'selected' :""?> >Cachorro</option>
-                                <option vlaue="gato" <?=($_GET['especie'] == 'Gato') ? 'selected' :""?>>Gato</option>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <select name="pet" class="form-select">
+                                <option value="">Selecione..</option>
+                                <?php foreach($pets as $indice => $pet){ ?>
+                                    <option value="<?php echo $pet->id_pet ?>"> <?php echo $pet->name ?> </option>
+                                <?php
+                                } ?>
                             </select>
                         </div>
-                    </div>
-
-                    <div class="row justify-content-md-center" style="margin-top: 10px; margin-bottom: 10px">
-                        <div class="col-3">
-                            <label>Raça:</label>
-                        </div>
-                        <div class="col-3">
-                            <label>Porte:</label>
-                        </div>
-                        <div class="col-3">
-                            <label>Nascimento:</label>
-                        </div>
-                    </div>
-                                
-                    <div class="row justify-content-md-center">
-                        <div class="col-3">
-                            <input type="text" name="raca" class="form-control" id="raca" value="<?=$_GET['raca']?>" placeholder="Raça:" required>
-                        </div>
-                        <div class="col-3">
-                            <select class="form-control" name="porte">
-                                <option vlaue="pequeno" <?= ($_GET['porte'] == 'Pequeno') ? 'selected' : '' ?>>Pequeno</option>
-                                <option vlaue="medio" <?= ($_GET['porte'] == 'Médio') ? 'selected' : '' ?>>Médio</option>
-                                <option vlaue="grande" <?= ($_GET['porte'] == 'Grande') ? 'selected' : '' ?>>Grande</option>
+                        <div class="col-md-3">
+                            <select name="servico" class="form-select">
+                                <option value="">Selecione...</option>
+                                <?php foreach($servicos as $indice => $dadosServicos){ ?>
+                                    <option value="<?php echo $dadosServicos->id_servico ?>"> <?php echo $dadosServicos->nome ?> </option>
+                                <?php    
+                                } ?>
                             </select>
                         </div>
-                        <div class="col-3">
-                            <input type="date" name="dataNasc" class="form-control" id="dataNasc" value="<?=$_GET['nascimento']?>" required>
-                        </div>
+                        <div class="col-md-3"></div>
                     </div>
 
-                    <div class="row justify-content-md-center pt-2 pb-4">
-                        <div class="col-3">
-                            <button type="submit" class="btn btn-primary">Editar</button>
+                    <div class="row mt-2">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <label>Data:</label>
                         </div>
-                        <div class="col-6"></div>
+                        <div class="col-md-3">
+                            <label>Hora:</label>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <input type="date" class="form-control" name="data" value="<?=$_GET['data']?>">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="time" class="form-control" name="hora" value="<?=$_GET['hora']?>">
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <label>Observação:</label>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="obs" placeholder="OBS:" value="">
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                        <button type="submit" class="btn btn-primary">Cadastarar</button>
+                        </div>
                     </div>
                 </form>
+
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-12" id="tabelaAgendamentos">
+
             </div>
         </div>
       </div>
@@ -191,8 +231,20 @@
 
     <!-- JavaScript (Opcional) -->
     <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(() => {
+            $("#buscarAgendamentos").click(() => {
+                $.get("tabelaAgendamentos.php?dataSel="+$("#dataSel").val(), (data, status) => {
+                    alert(status);
+                    $("#tabelaAgendamentos").empty();
+                    $("#tabelaAgendamentos").append(data);
+                })
+            })
+        })
+    </script>
   </body>
 </html>

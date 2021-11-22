@@ -22,14 +22,15 @@
             $stmt->execute();
         }
 
-        public function recuperarPet($name, $especie, $raca, $porte, $nascimento){
+        public function recuperarPet($name, $especie, $raca, $porte, $nascimento, $usuer_id_user){
             $where = 'where 1=1';
 
-            if($name != null){ $where .= ' AND name like "%'.$name.'%"'; }
-            if($especie != null){ $where .= ' AND especie = "'.$especie.'"'; }
-            if($raca != null){ $where .= ' AND raca = "'.$raca.'"'; }
-            if($porte != null){ $where .= ' AND porte = "'.$porte.'"'; }
-            if($nascimento != null){ $where .= ' AND nascimento = "'.$nascimento.'"'; }
+            //if($name != null){ $where .= ' AND name like "%'.$name.'%"'; }
+            //if($especie != null){ $where .= ' AND especie = "'.$especie.'"'; }
+            //if($raca != null){ $where .= ' AND raca = "'.$raca.'"'; }
+            //if($porte != null){ $where .= ' AND porte = "'.$porte.'"'; }
+            //if($nascimento != null){ $where .= ' AND nascimento = "'.$nascimento.'"'; }
+            if($usuer_id_user != null){ $where .= ' AND usuer_id_user = '.$usuer_id_user.''; }
 
             $query = 'select * from pet '.$where.' order by name';
             //print_r($query);

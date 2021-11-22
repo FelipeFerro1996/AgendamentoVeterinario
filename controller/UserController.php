@@ -59,6 +59,7 @@
 
 			$_SESSION['email'] =  $autenticar[0]->email;
 			$_SESSION['id'] =  $autenticar[0]->id_user;
+			$_SESSION['nome'] =  $autenticar[0]->name;
 			$_SESSION['time']     = time();
 		}else{
 			echo "<script> window.alert('Email e senha não cadastrado!')

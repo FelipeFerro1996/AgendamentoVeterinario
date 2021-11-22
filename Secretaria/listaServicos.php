@@ -52,7 +52,7 @@
                 <a href="listaServicos.php" class="nav-link">Serviços</a>
               </li>
               <li class="navbar-item">
-                <a href="#" class="nav-link">Agendamentos</a>
+                <a href="buscarAgendamentos.php" class="nav-link">Agendamentos</a>
               </li>
               <li class="navbar-item">
                 <a href="../controller/SecretariaController.php?acao=sair" class="btn btn-outline-light ml-4">Sair</a>

@@ -8,6 +8,11 @@
           </script>";
   }
 
+  $acao = 'recuperar';
+  require "../controller/AgendamentoController.php";
+
+  //print_r($agendamentos);
+
 ?>
 
 <!DOCTYPE html>
@@ -45,18 +50,12 @@
           </button>
 
           <div class="collapse navbar-collapse" id="nav-principal">
-            <ul class="navbar-nav ml-auto">
-              <li class="navbar-item">
-                <a href="home.php" class="nav-link">Home</a>
-              </li>
+          <ul class="navbar-nav ml-auto">
               <li class="navbar-item">
                 <a href="listaServicos.php" class="nav-link">Serviços</a>
               </li>
               <li class="navbar-item">
-                <a href="sobreNos.php" class="nav-link">Sobre-nós</a>
-              </li>
-              <li class="navbar-item">
-                <a href="#" class="nav-link">Agendamentos</a>
+                <a href="meusAgendamentos.php" class="nav-link">Agendamentos</a>
               </li>
               <li class="navbar-item">
                 <a href="listaPets.php" class="nav-link">Pets</a>
@@ -107,7 +106,7 @@
             <h1 class="text-center">Meus Agendamentos</h1>
          </div>
          <div class="col-md-2">
-            <a href="" class="btn btn-outline-light">
+            <a href="cadastrarAgendamento.php" class="btn btn-outline-light">
                 <i class="fas fa-plus-square"></i>
             </a>
          </div>
@@ -119,21 +118,33 @@
                         <tr>
                             <th scope="col">Data</th>
                             <th scope="col">Horario</th>
-                            <th>Dono</th>
+                            <th scope="col">Dono</th>
                             <th scope="col">Nome Pet</th>
-                            <th scope="col">Espécie</th>
-                            <th scope="col">Raça</th>
+                            <th scope="col">Servico</th>
+                            <th scope="col">Editar</th>
+                            <th scope="col">Excluir</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>18/09/2021</td>
-                            <td>08:00</td>
-                            <td>Felipe</td>
-                            <td>Thor</td>
-                            <td>Cachorro</td>
-                            <td>Vira-lata</td>
-                        </tr>
+                    <?php
+                    if($pets){
+                      foreach ($agendamentos as $indice => $dados) {
+                    ?>
+
+                      <tr>
+                        <td><?=$dados->data?></td>       
+                        <td><?=$dados->hora?></td>
+                        <td><?=$dados->dono?></td>
+                        <td><?=$dados->pet?></td>
+                        <td><?=$dados->servico?></td>
+                        <td class="text-center"><i style="color:blue" class="fas fa-edit" onclick="editar('<?=$dados->name?>','<?=$dados->especie?>','<?=$dados->raca?>', '<?=$dados->porte?>','<?=$dados->nascimento?>',<?=$dados->id_pet?>)"></i></td>
+                        <td class="text-center"><i style="color:red" class="fas fa-trash-alt" onclick="excluir(<?=$dados->id_pet?>)"></i></td>
+                      </tr>
+
+                    <?php
+                      }
+                    }
+                    ?>
                     </tbody>
                 </table>
             </div>

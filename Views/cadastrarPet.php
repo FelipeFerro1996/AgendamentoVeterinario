@@ -47,16 +47,10 @@
           <div class="collapse navbar-collapse" id="nav-principal">
             <ul class="navbar-nav ml-auto">
               <li class="navbar-item">
-                <a href="home.php" class="nav-link">Home</a>
-              </li>
-              <li class="navbar-item">
                 <a href="listaServicos.php" class="nav-link">Serviços</a>
               </li>
               <li class="navbar-item">
-                <a href="sobreNos.php" class="nav-link">Sobre-nós</a>
-              </li>
-              <li class="navbar-item">
-                <a href="cadastrarAgendamento.php" class="nav-link">Agendamentos</a>
+                <a href="meusAgendamentos.php" class="nav-link">Agendamentos</a>
               </li>
               <li class="navbar-item">
                 <a href="listaPets.php" class="nav-link">Pets</a>
