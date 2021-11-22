@@ -63,36 +63,6 @@
       </nav>
     </header><!--fim cabeçalho-->
 
-    <section id="home" ><!--Inicio seção home-->
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 d-flex">
-            
-            <div class="align-self-center">
-              <h1 class="display-4">A saúde do seu pet é o nosso objetivo!!</h1>
-              <p>
-                Traga o seu Pet para realizar os nossos procedimentos! Aqui o seu Pet receberá tratamento Vip!
-              </p>
-
-              <p>Disponível para
-                <a href="" class="btn btn-outline-light">
-                  <i class="fab fa-android fa-lg"></i>
-                </a>
-                <a href="" class="btn btn-outline-light">
-                  <i class="fab fa-apple fa-lg"></i>
-                </a>
-              </p>
-
-            </div>
-
-          </div>
-          <div class="col-md-6 d-none d-md-block">
-            <img src="../img/pug2.png" class="img-fluid">
-          </div>
-        </div>
-      </div>
-    </section><!--fim seção home-->
-
     <section id="conteudo" class="bg-info"><!--Inicio seção Conteudo-->
       <div class="container">
         <div class="row justify-content-md-center pt-4 pb-4">
