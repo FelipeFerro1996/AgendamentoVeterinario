@@ -1,3 +1,17 @@
+<?php
+require 'conexao.php';
+require 'DAO/servicoDao.php';
+require 'model/Servico.php';
+
+$servico = new Servico();
+
+$conexao = new Conexao();
+
+$servicoDao = new ServicoDao($conexao, $servico);
+
+$servicos = $servicoDao->recuperarServico("", "");
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -24,7 +38,7 @@
 
         <a href="#" class="logo"> <i class="fas fa-paw"> </i> Pet Archive™ </a>
 
-        <nav class="navbar">
+        <nav class="navbar" style="font-size:2px">
             <a href="#inicio">Início</a>
             <a href="#servicos">Serviços</a>
             <a href="#sobre">Sobre Nós</a>
@@ -97,7 +111,7 @@
 
     <!-- Início da seção de serviços -->
 
-    <section class="servicos" id="servicos">
+    <!--<section class="servicos" id="servicos">
         <h1 class="heading"> SERVIÇOS <span> OFERECIDOS </span> </h1>
 
         <div class="box-container">
@@ -143,6 +157,26 @@
                 <p>É oferecida a opção de buscar seu peludo em casa e levá-lo de volta, após o atendimento...</p>
                 <a href="#" class="btn"> Leia mais ➤ <span class="fas fa-chavron-right"> </span> </a>
             </div>
+
+    </section>-->
+
+    <section class="servicos" id="servicos">
+        <h1 class="heading"> SERVIÇOS <span> OFERECIDOS </span> </h1>
+
+        <div class="box-container">
+
+            <?php
+            foreach($servicos as $indice => $servico){
+            ?>
+                <div class="box">
+                    <i class="<?= $servico->icone ?>"></i>
+                    <h3><?= $servico->nome ?></h3>
+                    <p><?= $servico->descricao ?></p>
+                    <a href="#" class="btn"> Leia mais ➤ <span class="fas fa-chavron-right"> </span> </a>
+                </div>
+            <?php
+            }
+            ?>
 
     </section>
 
